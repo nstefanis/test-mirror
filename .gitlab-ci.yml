@@ -10,3 +10,7 @@ test:
     - whoami
     - pwd
     - ls -la
+    - cd $CI_PROJECT_DIR
+    - echo $CI_PROJECT_DIR
+    - git status
+    - git log --oneline
