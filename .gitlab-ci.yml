@@ -2,7 +2,8 @@ stages:
   - test
 
 test:
-  tags: sandbox
+  tags: 
+    - sandbox
   stage: test
   script: 
     - env
