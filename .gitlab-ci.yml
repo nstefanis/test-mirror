@@ -1,0 +1,11 @@
+stages:
+  - test
+
+test:
+  tags: sandbox
+  stage: test
+  script: 
+    - env
+    - whoami
+    - pwd
+    - ls -la
