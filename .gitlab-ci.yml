@@ -14,5 +14,5 @@ test:
     - echo $CI_PROJECT_DIR
     - git status
     - git log --oneline
-    - echo 'Adding upstream remote: '$GIT_REMOTE_URL
+    - echo 'Adding upstream remote \:' $GIT_REMOTE_URL
     - git remote add upstream "$GIT_REMOTE_URL"
