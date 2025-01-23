@@ -15,7 +15,7 @@ test:
     - git status
     - git log --oneline
     - echo 'Adding upstream remote \:' $GIT_REMOTE_URL
-    - git remote add upstream "$GIT_REMOTE_URL"
+    - # git remote add upstream "$GIT_REMOTE_URL"
     - echo "Fetching changes from upstream..."
     - |
         # This needs to be checked
