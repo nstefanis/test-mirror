@@ -36,6 +36,8 @@ test:
           git merge --no-edit "upstream/$branch_name" || true
         done
 
+        git log --onelines;
+
         # Optionally push all branches/tags to GitLab
         echo "Pushing merged branches/tags to GitLab...";
         git push origin --all;
