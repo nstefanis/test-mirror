@@ -15,22 +15,21 @@ test:
     - git status
     - git log --oneline
     - echo 'Adding upstream remote \:' $GIT_REMOTE_URL
-    - # git remote add upstream "$GIT_REMOTE_URL"
     - echo "Fetching changes from upstream..."
     - |
         # This needs to be checked
-        git fetch upstream --prune
-        echo "Merging upstream changes into local branches..."
+        git fetch upstream --prune;
+        echo "Merging upstream changes into local branches...";
         # Get the list of all branches from upstream (excluding HEAD -> references)
         for remote_branch in $(git branch -r | grep -E '^ *upstream/' | grep -v '->'); do
           # Extract branch name (skip 'upstream/' prefix)
-          branch_name="${remote_branch#upstream/}"
+          branch_name="${remote_branch#upstream/}";
 
           # Checkout/create local branch
           if git rev-parse --verify "$branch_name" &>/dev/null; then
-            git checkout "$branch_name"
+            git checkout "$branch_name";
           else
-            git checkout -b "$branch_name" "upstream/$branch_name"
+            git checkout -b "$branch_name" "upstream/$branch_name";
           fi
 
           # Merge upstream branch
@@ -38,6 +37,6 @@ test:
         done
 
         # Optionally push all branches/tags to GitLab
-        echo "Pushing merged branches/tags to GitLab..."
-        git push origin --all
-        git push origin --tags
+        echo "Pushing merged branches/tags to GitLab...";
+        git push origin --all;
+        git push origin --tags;
