@@ -15,6 +15,7 @@ test:
     - git status
     - git log --oneline
     - git remote -v 
+    - git branch -al 
     - |
         if ! git remote get-url upstream &> /dev/null; then
           echo "Adding upstream remote: $GIT_REMOTE_URL"
@@ -47,6 +48,6 @@ test:
 
         # Optionally push all branches/tags to GitLab
         echo "Pushing merged branches/tags to GitLab...";
-      
+        git branch -al 
         git push origin --all;
         git push origin --tags;
