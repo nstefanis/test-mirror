@@ -21,7 +21,7 @@ test:
         git fetch upstream --prune;
         echo "Merging upstream changes into local branches...";
         # Get the list of all branches from upstream (excluding HEAD -> references)
-        for remote_branch in $(git branch -r | grep -E '^ *upstream/' | grep -v '->'); do
+        for remote_branch in $(git branch -r | grep -E '^ *upstream/' | grep -v '\->'); do
           # Extract branch name (skip 'upstream/' prefix)
           branch_name="${remote_branch#upstream/}";
 
@@ -36,7 +36,7 @@ test:
           git merge --no-edit "upstream/$branch_name" || true
         done
 
-        git log --onelines;
+        git log --oneline;
 
         # Optionally push all branches/tags to GitLab
         echo "Pushing merged branches/tags to GitLab...";
