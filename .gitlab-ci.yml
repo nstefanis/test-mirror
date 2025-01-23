@@ -37,6 +37,7 @@ test:
         done
 
         git log --oneline;
+        ls -la ;
 
         # Optionally push all branches/tags to GitLab
         echo "Pushing merged branches/tags to GitLab...";
