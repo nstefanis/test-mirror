@@ -14,9 +14,14 @@ test:
     - echo $CI_PROJECT_DIR
     - git status
     - git log --oneline
-    - echo 'Adding upstream remote \:' $GIT_REMOTE_URL
-    - echo "Fetching changes from upstream..."
+    - git remote -v 
     - |
+        if ! git remote get-url upstream &> /dev/null; then
+          echo "Adding upstream remote: $GIT_REMOTE_URL"
+          git remote add upstream "$GIT_REMOTE_URL"
+        fi
+
+        echo "Fetching changes from upstream..."
         # This needs to be checked
         git fetch upstream --prune;
         echo "Merging upstream changes into local branches...";
@@ -38,8 +43,10 @@ test:
 
         git log --oneline;
         ls -la ;
+        git remote -v;
 
         # Optionally push all branches/tags to GitLab
         echo "Pushing merged branches/tags to GitLab...";
+      
         git push origin --all;
         git push origin --tags;
